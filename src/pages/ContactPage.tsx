@@ -50,39 +50,39 @@ Submitted via Swisa Associates Official Portal`;
   };
 
   return (
-    <div className="pt-24 min-h-screen bg-slate-50">
+    <div className="pt-20 sm:pt-24 min-h-screen bg-slate-50">
       
       {/* Header */}
-      <section className="bg-gradient-to-b from-slate-100 via-slate-50 to-white text-slate-900 py-16 sm:py-20 border-b border-slate-200">
+      <section className="bg-gradient-to-b from-slate-100 via-slate-50 to-white text-slate-900 py-10 sm:py-16 md:py-20 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl reveal-on-scroll">
-            <span className="text-xs font-mono uppercase tracking-widest text-amber-700 font-bold block mb-2">
+            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-amber-700 font-bold block mb-2">
               CONTACT & DIPLOMATIC LIAISON DESK
             </span>
-            <h1 className="text-3xl sm:text-5xl font-bold font-display text-slate-900 mb-6">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold font-display text-slate-900 mb-3 sm:mb-6 leading-tight">
               Connect Directly with Our Consular Officers.
             </h1>
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              Give us a call or visit our New Delhi office anytime. We endeavor to answer all inquiries within <strong className="text-amber-700">24 hours on business days</strong>.
+            <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed">
+              Give us a call or visit our New Delhi office anytime. We endeavor to answer all inquiries within <strong className="text-amber-700 font-semibold">24 hours on business days</strong>.
             </p>
           </div>
         </div>
       </section>
 
       {/* Main Contact Container */}
-      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <section className="py-8 sm:py-12 md:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12">
           
           {/* Left Column: Form & Prefer WhatsApp Card (7 cols) */}
-          <div className="lg:col-span-7 space-y-8 reveal-left">
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8 reveal-left">
             
             {/* Contact Form Card */}
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm hover-lift card-shine">
-              <div className="border-b border-slate-100 pb-4 mb-6">
-                <span className="text-xs font-mono uppercase text-amber-700 font-bold block">
+            <div className="bg-white p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border border-slate-200 shadow-sm hover-lift card-shine">
+              <div className="border-b border-slate-100 pb-3 sm:pb-4 mb-4 sm:mb-6">
+                <span className="text-[11px] sm:text-xs font-mono uppercase text-amber-700 font-bold block">
                   READY TO GET STARTED?
                 </span>
-                <h2 className="text-2xl font-bold font-display text-slate-900 mt-1">
+                <h2 className="text-xl sm:text-2xl font-bold font-display text-slate-900 mt-1">
                   Send an Official Inquiry
                 </h2>
                 <p className="text-xs text-slate-500 mt-1 font-mono">
@@ -110,7 +110,7 @@ Submitted via Swisa Associates Official Portal`;
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                     <div>
                       <label className="block text-xs font-mono uppercase text-slate-600 font-bold mb-1">
                         Enter Your Name *
@@ -121,7 +121,7 @@ Submitted via Swisa Associates Official Portal`;
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="e.g. Mohd. Tariq"
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50 text-base sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all"
                       />
                     </div>
 
@@ -135,12 +135,12 @@ Submitted via Swisa Associates Official Portal`;
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="+91 98110 84530"
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50 text-base sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                     <div>
                       <label className="block text-xs font-mono uppercase text-slate-600 font-bold mb-1">
                         Enter Your Email *
@@ -151,7 +151,7 @@ Submitted via Swisa Associates Official Portal`;
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="name@company.com"
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50 text-base sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all"
                       />
                     </div>
 
@@ -162,7 +162,7 @@ Submitted via Swisa Associates Official Portal`;
                       <select
                         value={department}
                         onChange={(e) => setDepartment(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50 text-base sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all"
                       >
                         <option value="mofa@swisaassociates.com">MOFA & Saudi Stamping Desk</option>
                         <option value="visa@swisaassociates.com">Kuwait & Consular Visa Desk</option>
@@ -183,25 +183,25 @@ Submitted via Swisa Associates Official Portal`;
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Please mention destination country, visa category (employment, visit, attestation), or number of candidates..."
-                      className="w-full px-3.5 py-2 rounded-lg border border-slate-200 bg-slate-50 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none transition-all"
+                      className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50 text-base sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none transition-all"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                     <button
                       type="submit"
-                      className="w-full py-3.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center space-x-2 shadow-sm hover-lift"
+                      className="w-full py-3.5 px-4 bg-slate-900 hover:bg-slate-800 active:scale-[0.99] text-white rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center space-x-2 shadow-sm hover-lift"
                     >
-                      <Mail className="w-4 h-4 text-amber-400" />
+                      <Mail className="w-4 h-4 text-amber-400 shrink-0" />
                       <span>Send</span>
                     </button>
 
                     <button
                       type="button"
                       onClick={handleWhatsAppDirect}
-                      className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center space-x-2 shadow-sm hover-lift"
+                      className="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center space-x-2 shadow-sm hover-lift"
                     >
-                      <WhatsAppIcon className="w-4 h-4 fill-white text-white" />
+                      <WhatsAppIcon className="w-4 h-4 fill-white text-white shrink-0" />
                       <span>Send Direct via WhatsApp</span>
                     </button>
                   </div>
@@ -210,15 +210,15 @@ Submitted via Swisa Associates Official Portal`;
             </div>
 
             {/* "Prefer WhatsApp?" Card */}
-            <div className="bg-slate-900 text-white p-6 rounded-2xl border border-slate-800 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4 hover-lift card-shine">
+            <div className="bg-slate-900 text-white p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border border-slate-800 shadow-xl flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 hover-lift card-shine">
               <div className="space-y-1">
                 <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-400 font-bold block">
                   SPEED & CONVENIENCE
                 </span>
-                <h3 className="font-display font-bold text-lg text-white">
+                <h3 className="font-display font-bold text-base sm:text-lg text-white">
                   Prefer WhatsApp? Message Us Directly
                 </h3>
-                <p className="text-xs text-slate-300">
+                <p className="text-xs text-slate-300 leading-relaxed">
                   Skip the form entirely and start a real-time conversation with our visa counselor right now.
                 </p>
               </div>
@@ -227,9 +227,9 @@ Submitted via Swisa Associates Official Portal`;
                 href={`https://wa.me/${COMPANY_DETAILS.whatsappNumber}?text=${encodeURIComponent('Hello Swisa Associates, I am messaging directly from the Contact page.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="shrink-0 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-mono font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center space-x-2 hover-lift"
+                className="w-full sm:w-auto shrink-0 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white font-mono font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center space-x-2 hover-lift"
               >
-                <WhatsAppIcon className="w-4 h-4 fill-white text-white" />
+                <WhatsAppIcon className="w-4 h-4 fill-white text-white shrink-0" />
                 <span>Open WhatsApp Desk</span>
               </a>
             </div>
@@ -237,12 +237,12 @@ Submitted via Swisa Associates Official Portal`;
           </div>
 
           {/* Right Column: Complete Department Directory & Location (5 cols) */}
-          <div className="lg:col-span-5 space-y-6 reveal-right">
+          <div className="lg:col-span-5 space-y-4 sm:space-y-6 reveal-right">
             
             {/* Department Email Directory */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover-lift card-shine">
-              <div className="border-b border-slate-100 pb-3 mb-4">
-                <span className="text-xs font-mono uppercase text-amber-700 font-bold block">
+            <div className="bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-slate-200 shadow-sm hover-lift card-shine">
+              <div className="border-b border-slate-100 pb-3 mb-3 sm:mb-4">
+                <span className="text-[11px] sm:text-xs font-mono uppercase text-amber-700 font-bold block">
                   DEPARTMENT DIRECTORY
                 </span>
                 <h3 className="font-display font-bold text-lg text-slate-900">
@@ -250,7 +250,7 @@ Submitted via Swisa Associates Official Portal`;
                 </h3>
               </div>
 
-              <div className="space-y-3 text-xs font-mono">
+              <div className="space-y-2.5 sm:space-y-3 text-xs font-mono">
                 {[
                   { dept: 'General Desk', email: COMPANY_DETAILS.emails.general, desc: 'Corporate & general inquiries' },
                   { dept: 'Applications Intake', email: COMPANY_DETAILS.emails.applications, desc: 'Document submissions' },
@@ -259,10 +259,10 @@ Submitted via Swisa Associates Official Portal`;
                   { dept: 'Consular Visas', email: COMPANY_DETAILS.emails.visa, desc: 'Kuwait & international stamping' },
                   { dept: 'Emigration & Attestation', email: COMPANY_DETAILS.emails.emigration, desc: 'MEA, HRD & POE clearances' },
                 ].map((item, idx) => (
-                  <div key={idx} className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 hover:border-amber-400 transition-colors">
-                    <div className="flex items-center justify-between">
+                  <div key={idx} className="p-3 rounded-lg bg-slate-50 border border-slate-200 hover:border-amber-400 transition-colors">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2">
                       <span className="font-bold text-slate-900">{item.dept}</span>
-                      <a href={`mailto:${item.email}`} className="text-amber-700 hover:underline truncate ml-2 font-medium">
+                      <a href={`mailto:${item.email}`} className="text-amber-700 hover:underline break-all sm:truncate font-medium text-[11px] sm:text-xs">
                         {item.email}
                       </a>
                     </div>
@@ -273,9 +273,9 @@ Submitted via Swisa Associates Official Portal`;
             </div>
 
             {/* Office Address & Phone Card */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4 hover-lift card-shine">
+            <div className="bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-slate-200 shadow-sm space-y-4 hover-lift card-shine">
               <div className="border-b border-slate-100 pb-3">
-                <span className="text-xs font-mono uppercase text-amber-700 font-bold block">
+                <span className="text-[11px] sm:text-xs font-mono uppercase text-amber-700 font-bold block">
                   HEADQUARTERS LOCATION
                 </span>
                 <h3 className="font-display font-bold text-lg text-slate-900">
@@ -288,7 +288,7 @@ Submitted via Swisa Associates Official Portal`;
                   <MapPin className="w-4 h-4 text-amber-600 shrink-0 mt-0.5 animate-bounce-subtle" />
                   <div>
                     <strong className="text-slate-900 block">Physical Address:</strong>
-                    <span>{COMPANY_DETAILS.address}</span>
+                    <span className="leading-relaxed">{COMPANY_DETAILS.address}</span>
                   </div>
                 </div>
 
@@ -296,16 +296,16 @@ Submitted via Swisa Associates Official Portal`;
                   <Phone className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
                   <div>
                     <strong className="text-slate-900 block">Direct Lines:</strong>
-                    <div className="space-y-0.5 font-mono">
+                    <div className="space-y-1 font-mono mt-0.5">
                       <div>
-                        <a href={`tel:${COMPANY_DETAILS.phonePrimary.replace(/\s+/g, '')}`} className="text-slate-900 hover:text-amber-700 font-semibold">
+                        <a href={`tel:${COMPANY_DETAILS.phonePrimary.replace(/\s+/g, '')}`} className="text-slate-900 hover:text-amber-700 font-semibold underline sm:no-underline">
                           {COMPANY_DETAILS.phonePrimary}
-                        </a> (Mobile / WhatsApp)
+                        </a> <span className="text-slate-500 text-[11px] sm:text-xs">(Mobile / WhatsApp)</span>
                       </div>
                       <div>
-                        <a href={`tel:${COMPANY_DETAILS.phoneSecondary.replace(/\s+/g, '')}`} className="text-slate-900 hover:text-amber-700 font-semibold">
+                        <a href={`tel:${COMPANY_DETAILS.phoneSecondary.replace(/\s+/g, '')}`} className="text-slate-900 hover:text-amber-700 font-semibold underline sm:no-underline">
                           {COMPANY_DETAILS.phoneSecondary}
-                        </a> (Landline Desk)
+                        </a> <span className="text-slate-500 text-[11px] sm:text-xs">(Landline Desk)</span>
                       </div>
                     </div>
                   </div>
@@ -331,9 +331,9 @@ Submitted via Swisa Associates Official Portal`;
                   allowFullScreen={false}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-56 filter contrast-105"
+                  className="w-full h-48 sm:h-56 filter contrast-105"
                 />
-                <div className="p-3 bg-slate-900 text-white flex items-center justify-between text-xs font-mono">
+                <div className="p-2.5 sm:p-3 bg-slate-900 text-white flex items-center justify-between text-xs font-mono">
                   <div className="flex items-center space-x-1.5 truncate mr-2">
                     <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0 animate-bounce-subtle" />
                     <span className="truncate text-[11px] text-slate-300">Bharat Nagar, New Friends Colony, New Delhi</span>
@@ -352,22 +352,22 @@ Submitted via Swisa Associates Official Portal`;
             </div>
 
             {/* Social & Digital Presence Card */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover-lift card-shine">
-              <span className="text-xs font-mono uppercase text-amber-700 font-bold block mb-1">
+            <div className="bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-slate-200 shadow-sm hover-lift card-shine">
+              <span className="text-[11px] sm:text-xs font-mono uppercase text-amber-700 font-bold block mb-1">
                 OFFICIAL SOCIAL NETWORK
               </span>
-              <h3 className="font-display font-bold text-lg text-slate-900 mb-3">
+              <h3 className="font-display font-bold text-lg text-slate-900 mb-2 sm:mb-3">
                 Follow Swisa Associates
               </h3>
-              <p className="text-xs text-slate-600 mb-4">
+              <p className="text-xs text-slate-600 mb-3.5 sm:mb-4">
                 Stay updated on latest Gulf visa regulations, job openings, embassy alerts, and candidate success stories.
               </p>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-2.5 sm:gap-3">
                 <a
                   href={COMPANY_DETAILS.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-mono font-bold flex items-center space-x-2 border border-slate-800 transition-all hover:border-amber-400 hover-lift shadow-sm"
+                  className="w-full sm:w-auto px-4 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 active:scale-[0.99] text-white text-xs font-mono font-bold flex items-center justify-center sm:justify-start space-x-2 border border-slate-800 transition-all hover:border-amber-400 hover-lift shadow-sm"
                 >
                   <span>Facebook: @swisaassociates</span>
                   <ExternalLink className="w-3.5 h-3.5 text-amber-400" />
@@ -377,7 +377,7 @@ Submitted via Swisa Associates Official Portal`;
                   href={COMPANY_DETAILS.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-mono font-bold flex items-center space-x-2 border border-slate-800 transition-all hover:border-amber-400 hover-lift shadow-sm"
+                  className="w-full sm:w-auto px-4 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 active:scale-[0.99] text-white text-xs font-mono font-bold flex items-center justify-center sm:justify-start space-x-2 border border-slate-800 transition-all hover:border-amber-400 hover-lift shadow-sm"
                 >
                   <span>LinkedIn: Asad Ullah</span>
                   <ExternalLink className="w-3.5 h-3.5 text-amber-400" />
