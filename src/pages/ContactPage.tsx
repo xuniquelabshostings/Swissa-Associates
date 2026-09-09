@@ -22,6 +22,25 @@ export const ContactPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Construct preformatted email
+    const subject = `[Visa & Consular Inquiry] New Case from ${name || 'Prospective Client'} - Swisa Associates`;
+    const body = `OFFICIAL INQUIRY DOSSIER - SWISA ASSOCIATES
+==================================================
+Applicant Name: ${name || 'N/A'}
+Phone / WhatsApp: ${phone || 'N/A'}
+Email Address: ${email || 'N/A'}
+Target Department: ${department}
+
+Case Details / Message:
+${message || 'N/A'}
+
+==================================================
+Submitted via Swisa Associates Official Portal`;
+
+    const mailtoUrl = `mailto:${department}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoUrl;
+
     setSubmitted(true);
   };
 
@@ -67,7 +86,7 @@ export const ContactPage: React.FC = () => {
                   Send an Official Inquiry
                 </h2>
                 <p className="text-xs text-slate-500 mt-1 font-mono">
-                  Required fields are marked *. All inquiries protected under privacy policy.
+                  Required fields are marked *. Generates a preformatted email to the selected desk.
                 </p>
               </div>
 
@@ -77,10 +96,10 @@ export const ContactPage: React.FC = () => {
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-bold font-display text-slate-900">
-                    Inquiry Transmitted Successfully
+                    Email Client Launched
                   </h3>
                   <p className="text-sm text-slate-600 max-w-md mx-auto">
-                    Thank you, <strong className="text-slate-900">{name}</strong>. A copy of your dossier has been routed to our consular desk. Expect a call or email within 24 hours.
+                    Your preformatted inquiry has been addressed to <strong className="text-slate-900">{department}</strong>. If your email app did not open automatically, you can also send directly via WhatsApp.
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
@@ -173,8 +192,8 @@ export const ContactPage: React.FC = () => {
                       type="submit"
                       className="w-full py-3.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center space-x-2 shadow-sm hover-lift"
                     >
-                      <Send className="w-4 h-4 text-amber-400" />
-                      <span>Transmit Message</span>
+                      <Mail className="w-4 h-4 text-amber-400" />
+                      <span>Send Preformatted Email</span>
                     </button>
 
                     <button
