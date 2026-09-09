@@ -233,7 +233,7 @@ export const ServiceMicroCanvas: React.FC<ServiceMicroCanvasProps> = ({ serviceI
       animateTakeoff();
 
     } else if (serviceId === 'hajj-umrah') {
-      // 3D Holy Kaaba + Tawaf Revolving Pilgrims
+      // Holy Kaaba image + Tawaf Revolving Crowd
       const hajjGroup = new THREE.Group();
       scene.add(hajjGroup);
       hajjGroup.position.set(0, -0.4, 0);
@@ -264,62 +264,28 @@ export const ServiceMicroCanvas: React.FC<ServiceMicroCanvasProps> = ({ serviceI
         hajjGroup.add(ringMesh);
       }
 
-      // 2. The Holy Kaaba Structure
-      const kaabaMat = new THREE.MeshStandardMaterial({
-        color: 0x0A0A0A,
-        roughness: 0.85,
-        metalness: 0.08,
-      });
-      const goldMat = new THREE.MeshStandardMaterial({
-        color: 0xD4AF37,
-        metalness: 0.95,
-        roughness: 0.18,
-      });
-      const marbleBaseMat = new THREE.MeshStandardMaterial({
-        color: 0xFAFAFA,
-        roughness: 0.2,
+      // 2. The Holy Kaaba Image (kaba.png) - Static, Non-Rotating
+      const textureLoader = new THREE.TextureLoader();
+      const kabaTexture = textureLoader.load(getAssetUrl('kaba.png'));
+      kabaTexture.colorSpace = THREE.SRGBColorSpace;
+      kabaTexture.minFilter = THREE.LinearMipmapLinearFilter;
+      kabaTexture.magFilter = THREE.LinearFilter;
+
+      const kabaMat = new THREE.MeshBasicMaterial({
+        map: kabaTexture,
+        transparent: true,
+        alphaTest: 0.05,
+        side: THREE.DoubleSide,
       });
 
-      // White Marble Base (Shadherwan)
-      const baseGeo = new THREE.BoxGeometry(2.35, 0.14, 2.35);
-      const marbleBase = new THREE.Mesh(baseGeo, marbleBaseMat);
-      marbleBase.position.y = 0.07;
-      hajjGroup.add(marbleBase);
+      // Upright plane facing camera angle
+      const kabaGeo = new THREE.PlaneGeometry(3.0, 3.0);
+      const kabaMesh = new THREE.Mesh(kabaGeo, kabaMat);
+      kabaMesh.position.set(0, 1.48, 0);
+      kabaMesh.rotation.x = -0.30; // Tilt to face camera viewpoint directly
+      hajjGroup.add(kabaMesh);
 
-      // Kaaba Main Black Cube
-      const kaabaGeo = new THREE.BoxGeometry(2.15, 2.6, 2.15);
-      const kaabaMesh = new THREE.Mesh(kaabaGeo, kaabaMat);
-      kaabaMesh.position.y = 1.44;
-      hajjGroup.add(kaabaMesh);
-
-      // Golden Kiswah Belt (Hizam) wrapping the upper portion
-      const beltGeo = new THREE.BoxGeometry(2.18, 0.28, 2.18);
-      const beltMesh = new THREE.Mesh(beltGeo, goldMat);
-      beltMesh.position.y = 2.25;
-      hajjGroup.add(beltMesh);
-
-      // Gold Kaaba Door (Bab al-Kaaba) on the East face
-      const doorGeo = new THREE.PlaneGeometry(0.62, 1.25);
-      doorGeo.rotateY(Math.PI / 2);
-      const doorMesh = new THREE.Mesh(doorGeo, goldMat);
-      doorMesh.position.set(1.09, 1.2, 0.25);
-      hajjGroup.add(doorMesh);
-
-      // Golden Rain Gutter (Meezab al-Rahmah) on top edge
-      const spoutGeo = new THREE.BoxGeometry(0.12, 0.06, 0.35);
-      const spoutMesh = new THREE.Mesh(spoutGeo, goldMat);
-      spoutMesh.position.set(0, 2.76, -1.15);
-      hajjGroup.add(spoutMesh);
-
-      // Hateem / Hijr Ismail (Semi-circular white marble wall)
-      const hateemGeo = new THREE.TorusGeometry(1.45, 0.06, 8, 24, Math.PI);
-      hateemGeo.rotateX(Math.PI / 2);
-      hateemGeo.rotateZ(Math.PI);
-      const hateemMesh = new THREE.Mesh(hateemGeo, marbleBaseMat);
-      hateemMesh.position.set(0, 0.1, -1.45);
-      hajjGroup.add(hateemMesh);
-
-      // 3. Pilgrims Revolving in Tawaf (Counter-Clockwise)
+      // 3. Pilgrims Revolving in Tawaf (Counter-Clockwise) - Rotating Crowd
       const pilgrimGroup = new THREE.Group();
       hajjGroup.add(pilgrimGroup);
 
@@ -363,7 +329,7 @@ export const ServiceMicroCanvas: React.FC<ServiceMicroCanvasProps> = ({ serviceI
         pilgrimRings.push({ mesh: instMesh, speed: ring.speed });
       });
 
-      // Spiritual warm golden spotlight on the Holy Kaaba
+      // Spiritual warm golden spotlight
       const spiritualLight = new THREE.PointLight(0xFFE899, 3.0, 10);
       spiritualLight.position.set(0, 4.5, 0);
       hajjGroup.add(spiritualLight);
@@ -372,10 +338,10 @@ export const ServiceMicroCanvas: React.FC<ServiceMicroCanvasProps> = ({ serviceI
         animationFrameId = requestAnimationFrame(animateHajj);
         const elapsed = clock.getElapsedTime();
 
-        // Slow cinematic rotation of the whole sacred courtyard
-        hajjGroup.rotation.y = elapsed * 0.08;
+        // Kaaba and Mataf remain fixed (no rotation on Kaaba)
+        hajjGroup.rotation.y = 0;
 
-        // Counter-clockwise revolving of pilgrim rings (Tawaf)
+        // Counter-clockwise revolving of pilgrim rings only (Tawaf crowd)
         pilgrimRings.forEach((ring) => {
           ring.mesh.rotation.y = elapsed * ring.speed;
         });

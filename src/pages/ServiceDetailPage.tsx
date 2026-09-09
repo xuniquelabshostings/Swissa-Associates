@@ -186,7 +186,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                     loading="lazy"
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent pointer-events-none" />
                   <div className="absolute bottom-3 left-4 right-4 text-white">
                     <span className="text-[10px] font-mono text-amber-400 font-bold uppercase tracking-wider block">
                       OFFICIAL OPERATION

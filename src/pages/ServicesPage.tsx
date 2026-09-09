@@ -46,7 +46,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenEn
                       loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent pointer-events-none" />
                     <div className="absolute top-3 left-3 bg-slate-900/90 text-amber-400 backdrop-blur-md px-2.5 py-1 rounded text-[10px] font-mono font-bold uppercase shadow-sm">
                       SECTOR 0{index + 1}
                     </div>

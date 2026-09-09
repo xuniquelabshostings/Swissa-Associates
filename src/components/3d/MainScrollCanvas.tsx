@@ -262,53 +262,111 @@ export const MainScrollCanvas: React.FC<MainScrollCanvasProps> = ({
     airliner.root.rotation.set(0.1, 0.4, -0.15);
 
     // 7. Raycaster for Interactive Country Selection on Real Globe
+    // 7. Raycaster & Interactive Drag to Rotate Real Globe
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
 
-    const handlePointerMove = (e: MouseEvent) => {
+    let isDragging = false;
+    let isUserInteracting = false;
+    let interactionTimeout: ReturnType<typeof setTimeout> | null = null;
+    let lastPointerX = 0;
+    let lastPointerY = 0;
+    let velocityX = 0;
+    let velocityY = 0;
+    let totalDragDistance = 0;
+
+    const handlePointerDown = (e: PointerEvent) => {
+      // Don't intercept right clicks
+      if (e.button !== 0) return;
+      isDragging = true;
+      isUserInteracting = true;
+      if (interactionTimeout) clearTimeout(interactionTimeout);
+      lastPointerX = e.clientX;
+      lastPointerY = e.clientY;
+      velocityX = 0;
+      velocityY = 0;
+      totalDragDistance = 0;
+      container.style.cursor = 'grabbing';
+    };
+
+    const handlePointerMove = (e: PointerEvent) => {
       const rect = container.getBoundingClientRect();
       mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
       mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
 
-      // Parallax drift
-      if (!reducedMotion) {
-        targetCameraOffset.x = mouse.x * 0.7;
-        targetCameraOffset.y = mouse.y * 0.5;
-      }
+      if (isDragging) {
+        const dx = e.clientX - lastPointerX;
+        const dy = e.clientY - lastPointerY;
+        totalDragDistance += Math.hypot(dx, dy);
 
-      // Check marker hover
-      raycaster.setFromCamera(mouse, camera);
-      const intersects = raycaster.intersectObjects(
-        countryMarkers.map((cm) => cm.mesh)
-      );
+        const rotSpeed = 0.0055;
+        globeTargetRotY += dx * rotSpeed;
+        globeTargetRotX += dy * rotSpeed;
+        globeTargetRotX = Math.max(-1.15, Math.min(1.15, globeTargetRotX));
 
-      if (intersects.length > 0) {
-        const hitId = intersects[0].object.userData.countryId;
-        setHoveredCountry(hitId);
-        container.style.cursor = 'pointer';
+        velocityX = dx * rotSpeed;
+        velocityY = dy * rotSpeed;
+
+        lastPointerX = e.clientX;
+        lastPointerY = e.clientY;
       } else {
-        setHoveredCountry(null);
-        container.style.cursor = 'default';
-      }
-    };
+        // Parallax drift
+        if (!reducedMotion) {
+          targetCameraOffset.x = mouse.x * 0.7;
+          targetCameraOffset.y = mouse.y * 0.5;
+        }
 
-    const handleClick = (e: MouseEvent) => {
-      raycaster.setFromCamera(mouse, camera);
-      const intersects = raycaster.intersectObjects(
-        countryMarkers.map((cm) => cm.mesh)
-      );
+        // Check marker hover
+        raycaster.setFromCamera(mouse, camera);
+        const intersects = raycaster.intersectObjects(
+          countryMarkers.map((cm) => cm.mesh)
+        );
 
-      if (intersects.length > 0) {
-        const hitId = intersects[0].object.userData.countryId;
-        setActiveCountry(hitId);
-        if (onSelectCountry) {
-          onSelectCountry(hitId);
+        if (intersects.length > 0) {
+          const hitId = intersects[0].object.userData.countryId;
+          setHoveredCountry(hitId);
+          container.style.cursor = 'pointer';
+        } else {
+          setHoveredCountry(null);
+          container.style.cursor = 'grab';
         }
       }
     };
 
-    container.addEventListener('mousemove', handlePointerMove);
-    container.addEventListener('click', handleClick);
+    const handlePointerUp = (e: PointerEvent) => {
+      if (!isDragging) return;
+      isDragging = false;
+      container.style.cursor = hoveredCountry ? 'pointer' : 'grab';
+
+      // Distinguish short click from drag gesture
+      if (totalDragDistance < 6) {
+        raycaster.setFromCamera(mouse, camera);
+        const intersects = raycaster.intersectObjects(
+          countryMarkers.map((cm) => cm.mesh)
+        );
+
+        if (intersects.length > 0) {
+          const hitId = intersects[0].object.userData.countryId;
+          setActiveCountry(hitId);
+          if (onSelectCountry) {
+            onSelectCountry(hitId);
+          }
+          isUserInteracting = false;
+          return;
+        }
+      }
+
+      // Keep user's custom view for a few seconds, then smoothly resume idle auto-rotation
+      if (interactionTimeout) clearTimeout(interactionTimeout);
+      interactionTimeout = setTimeout(() => {
+        isUserInteracting = false;
+      }, 5000);
+    };
+
+    container.addEventListener('pointerdown', handlePointerDown);
+    window.addEventListener('pointermove', handlePointerMove);
+    window.addEventListener('pointerup', handlePointerUp);
+    window.addEventListener('pointercancel', handlePointerUp);
 
     // 8. Scroll-Linked Animation State
     let scrollY = window.scrollY || 0;
@@ -355,6 +413,19 @@ export const MainScrollCanvas: React.FC<MainScrollCanvasProps> = ({
       currentCameraOffset.x += (targetCameraOffset.x - currentCameraOffset.x) * 0.05;
       currentCameraOffset.y += (targetCameraOffset.y - currentCameraOffset.y) * 0.05;
 
+      // Apply drag inertia / momentum when released
+      if (!isDragging) {
+        if (Math.abs(velocityX) > 0.00005) {
+          globeTargetRotY += velocityX;
+          velocityX *= 0.92;
+        }
+        if (Math.abs(velocityY) > 0.00005) {
+          globeTargetRotX += velocityY;
+          globeTargetRotX = Math.max(-1.15, Math.min(1.15, globeTargetRotX));
+          velocityY *= 0.92;
+        }
+      }
+
       // Pulse Delhi radar ring
       delhiPulse.scale.setScalar(1 + Math.sin(elapsedTime * 4) * 0.3);
       (delhiPulse.material as THREE.MeshBasicMaterial).opacity = 0.5 + Math.sin(elapsedTime * 4) * 0.3;
@@ -382,18 +453,20 @@ export const MainScrollCanvas: React.FC<MainScrollCanvasProps> = ({
       });
 
       // Update Real Earth orientation: orient towards selected country or slow planetary rotation
-      if (activeCountry) {
-        const found = DESTINATION_COUNTRIES.find((c) => c.id === activeCountry);
-        if (found) {
-          globeTargetRotY = -(found.lng * Math.PI) / 180 - Math.PI * 0.5;
-          globeTargetRotX = (found.lat * Math.PI) / 180 * 0.65;
+      if (!isUserInteracting) {
+        if (activeCountry) {
+          const found = DESTINATION_COUNTRIES.find((c) => c.id === activeCountry);
+          if (found) {
+            globeTargetRotY = -(found.lng * Math.PI) / 180 - Math.PI * 0.5;
+            globeTargetRotX = (found.lat * Math.PI) / 180 * 0.65;
+          }
+        } else if (!reducedMotion) {
+          globeTargetRotY += 0.0012;
         }
-      } else if (!reducedMotion) {
-        globeTargetRotY += 0.0012;
       }
 
-      globeGroup.rotation.y += (globeTargetRotY - globeGroup.rotation.y) * 0.04;
-      globeGroup.rotation.x += (globeTargetRotX - globeGroup.rotation.x) * 0.04;
+      globeGroup.rotation.y += (globeTargetRotY - globeGroup.rotation.y) * 0.06;
+      globeGroup.rotation.x += (globeTargetRotX - globeGroup.rotation.x) * 0.06;
 
       // --- SCROLL-LINKED FLIGHT TRAJECTORY ---
       const p = currentScrollProgress;
@@ -401,7 +474,16 @@ export const MainScrollCanvas: React.FC<MainScrollCanvasProps> = ({
       if (p < 0.25) {
         // Hero Section: Swisa 737 flies across the real Earth globe from LEFT to RIGHT with realistic banking
         const subP = p / 0.25;
-        globeGroup.position.x = 4.2 - subP * 1.5;
+        const screenW = container.clientWidth || window.innerWidth;
+        let baseGlobeX = 4.2;
+        if (screenW >= 1536) {
+          baseGlobeX = 5.6;
+        } else if (screenW >= 1280) {
+          baseGlobeX = 5.0;
+        } else if (screenW >= 1024) {
+          baseGlobeX = 4.5;
+        }
+        globeGroup.position.x = baseGlobeX - subP * 1.5;
         globeGroup.position.y = -0.6 + subP * 1.0;
         globeGroup.scale.setScalar(1.0 - subP * 0.15);
 
@@ -478,10 +560,13 @@ export const MainScrollCanvas: React.FC<MainScrollCanvasProps> = ({
 
     return () => {
       cancelAnimationFrame(animationFrameId);
+      if (interactionTimeout) clearTimeout(interactionTimeout);
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
-      container.removeEventListener('mousemove', handlePointerMove);
-      container.removeEventListener('click', handleClick);
+      container.removeEventListener('pointerdown', handlePointerDown);
+      window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('pointerup', handlePointerUp);
+      window.removeEventListener('pointercancel', handlePointerUp);
       renderer.dispose();
       if (container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);
@@ -506,9 +591,15 @@ export const MainScrollCanvas: React.FC<MainScrollCanvasProps> = ({
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 pointer-events-auto overflow-hidden"
+      className="absolute inset-0 pointer-events-auto overflow-hidden cursor-grab active:cursor-grabbing select-none"
       style={{ zIndex: 0 }}
       aria-label="3D Interactive Real Earth Globe and Swisa Flight Simulation"
-    />
+    >
+      {/* Interactive Helper Indicator */}
+      <div className="absolute bottom-6 right-8 hidden lg:flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-900/70 backdrop-blur-md text-amber-300/90 text-[10px] font-mono tracking-wider border border-amber-400/20 shadow-md pointer-events-none select-none transition-opacity duration-300 hover:opacity-100">
+        <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+        <span>Drag to rotate 3D Earth</span>
+      </div>
+    </div>
   );
 };

@@ -54,7 +54,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnquiry })
 
         {/* Content Container (Left 50% Asymmetric Split) */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pointer-events-none">
-          <div className="max-w-2xl pointer-events-auto">
+          <div className="max-w-2xl lg:max-w-xl xl:max-w-lg pointer-events-auto lg:pr-6 xl:pr-8">
             
             {/* Tag Badge */}
             <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-100/95 sm:bg-amber-50 border border-amber-400 sm:border-amber-300 text-amber-950 sm:text-amber-800 text-xs font-mono font-bold uppercase tracking-wider mt-3 sm:mt-0 mb-6 shadow-sm backdrop-blur-sm sm:backdrop-blur-none">
@@ -68,7 +68,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnquiry })
             </h1>
 
             {/* Subheading */}
-            <p className="text-base sm:text-lg text-slate-900 sm:text-slate-700 font-medium sm:font-normal leading-relaxed mb-8 max-w-xl bg-white/85 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none p-3.5 sm:p-0 rounded-xl sm:rounded-none border border-slate-200/80 sm:border-none shadow-sm sm:shadow-none">
+            <p className="text-base sm:text-lg text-slate-900 sm:text-slate-700 font-medium sm:font-normal leading-relaxed mb-8 max-w-xl lg:max-w-lg xl:max-w-md bg-white/85 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none p-3.5 sm:p-0 rounded-xl sm:rounded-none border border-slate-200/80 sm:border-none shadow-sm sm:shadow-none">
               Accredited consular visa stamping for <strong className="text-black sm:text-slate-900 font-bold sm:font-semibold">Saudi Arabia & Kuwait</strong>, pan-India industrial manpower deployment, MEA document attestation, and seamless international travel. 12+ years of diplomatic precision from New Delhi.
             </p>
 
@@ -94,7 +94,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnquiry })
             </div>
 
             {/* Hero Quick Trust Markers */}
-            <div className="grid grid-cols-3 gap-3 sm:gap-4 pt-4 sm:pt-6 border-t border-slate-300 sm:border-slate-200 max-w-lg font-mono text-xs text-slate-900 sm:text-slate-600 bg-white/80 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none p-3 sm:p-0 rounded-xl sm:rounded-none border border-slate-200/80 sm:border-none shadow-sm sm:shadow-none">
+            <div className="grid grid-cols-3 gap-3 sm:gap-4 pt-4 sm:pt-6 border-t border-slate-300 sm:border-slate-200 max-w-lg lg:max-w-md font-mono text-xs text-slate-900 sm:text-slate-600 bg-white/80 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none p-3 sm:p-0 rounded-xl sm:rounded-none border border-slate-200/80 sm:border-none shadow-sm sm:shadow-none">
               <div>
                 <div className="text-amber-800 sm:text-amber-700 font-bold text-sm">100% MOFA</div>
                 <div className="text-[11px] text-slate-900 sm:text-slate-600 font-semibold sm:font-normal">Enjaz Authorized</div>
