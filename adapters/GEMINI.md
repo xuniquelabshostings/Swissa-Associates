@@ -6,7 +6,7 @@
 This adapter provides optional enhancements for Gemini models in Antigravity.
 
 ---
-
+ 
 ## Model Selection
 
 ### Flash vs Pro
