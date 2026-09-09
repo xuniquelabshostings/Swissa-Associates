@@ -44,7 +44,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnquiry })
       {/* ========================================================================= */}
       {/* SECTION 1: HERO "DEPARTURE" SCENE (Section 3.2) */}
       {/* ========================================================================= */}
-      <section className="relative min-h-[92vh] sm:min-h-screen bg-gradient-to-b from-slate-100 via-white to-slate-100/70 text-slate-900 flex items-center pt-28 pb-16 overflow-hidden">
+      <section className="relative min-h-[92vh] sm:min-h-screen bg-gradient-to-b from-slate-100 via-white to-slate-100/70 text-slate-900 flex items-center pt-36 sm:pt-32 lg:pt-36 pb-16 overflow-hidden">
         
         {/* Full Interactive 3D WebGL Flight Canvas Background */}
         <MainScrollCanvas 
@@ -57,7 +57,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenEnquiry })
           <div className="max-w-2xl pointer-events-auto">
             
             {/* Tag Badge */}
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-100/95 sm:bg-amber-50 border border-amber-400 sm:border-amber-300 text-amber-950 sm:text-amber-800 text-xs font-mono font-bold uppercase tracking-wider mb-6 shadow-sm backdrop-blur-sm sm:backdrop-blur-none">
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-100/95 sm:bg-amber-50 border border-amber-400 sm:border-amber-300 text-amber-950 sm:text-amber-800 text-xs font-mono font-bold uppercase tracking-wider mt-3 sm:mt-0 mb-6 shadow-sm backdrop-blur-sm sm:backdrop-blur-none">
               <span className="w-2 h-2 rounded-full bg-amber-600 animate-pulse" />
               <span>EMBASSY ACCREDITED CONSULAR SERVICES</span>
             </div>
