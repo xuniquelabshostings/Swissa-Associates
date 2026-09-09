@@ -253,7 +253,7 @@ export const MainScrollCanvas: React.FC<MainScrollCanvasProps> = ({
     // 6. REAL SWISA BOEING 737 AIRLINER (using airplane.png)
     const airliner: AirlinerComponents = createPhotorealisticSwisaAirliner({
       scale: 0.72,
-      texturePath: '/airplane.png',
+      texturePath: getAssetUrl('airplane.png'),
     });
     scene.add(airliner.root);
 
@@ -493,7 +493,7 @@ export const MainScrollCanvas: React.FC<MainScrollCanvasProps> = ({
     return (
       <div className="absolute inset-0 flex items-center justify-center bg-sky-ink text-cloud p-6 text-center">
         <div className="max-w-md bg-sky-ink-deep/80 p-8 rounded-xl border border-brass/30 backdrop-blur-md">
-          <img src="/airplane.png" alt="Swisa Airliner" className="w-44 mx-auto mb-4 object-contain" />
+          <img src={getAssetUrl('airplane.png')} alt="Swisa Airliner" className="w-44 mx-auto mb-4 object-contain" />
           <h3 className="text-xl font-bold font-display text-cloud mb-2">High Altitude Global Flight Grid</h3>
           <p className="text-sm text-cloud/70 font-mono-tag">
             Consular corridors connecting New Delhi with Saudi Arabia, Kuwait, UAE, UK, and worldwide destinations.

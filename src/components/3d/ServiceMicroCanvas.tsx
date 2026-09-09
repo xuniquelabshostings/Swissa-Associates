@@ -197,7 +197,7 @@ export const ServiceMicroCanvas: React.FC<ServiceMicroCanvasProps> = ({ serviceI
       }
 
       // Swisa Airliner taking off straight along runway
-      const airliner = createRealisticAirliner({ scale: 0.48, texturePath: '/airplane.png' });
+      const airliner = createRealisticAirliner({ scale: 0.48, texturePath: getAssetUrl('airplane.png') });
       scene.add(airliner.root);
       airliner.root.position.set(-6, -0.65, 0);
 
