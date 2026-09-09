@@ -48,19 +48,19 @@ export const GalleryPage: React.FC = () => {
   ];
 
   return (
-    <div className="pt-24 min-h-screen bg-cloud">
+    <div className="pt-24 min-h-screen bg-slate-50">
       
       {/* Header */}
-      <section className="bg-sky-ink text-cloud py-16 sm:py-20 border-b border-brass/30">
+      <section className="bg-gradient-to-b from-slate-100 via-slate-50 to-white text-slate-900 py-16 sm:py-20 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-xs font-mono uppercase tracking-widest text-brass font-bold block mb-2">
+            <span className="inline-block px-3 py-1 rounded-full bg-amber-50 border border-amber-300 text-amber-800 text-xs font-mono font-bold tracking-widest uppercase mb-4">
               OPERATIONS & ARCHIVES
             </span>
-            <h1 className="text-3xl sm:text-5xl font-bold font-display text-cloud mb-6">
+            <h1 className="text-3xl sm:text-5xl font-bold font-display text-slate-900 mb-6">
               Field Operations & Client Journeys.
             </h1>
-            <p className="text-base sm:text-lg text-cloud/80 leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
               A visual glimpse into our daily consular processing, technical trade evaluation workshops, and pre-departure airport mobilizations.
             </p>
           </div>
@@ -73,36 +73,36 @@ export const GalleryPage: React.FC = () => {
           {galleryItems.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-2xl p-6 border border-brass/30 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between group overflow-hidden"
+              className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300 transition-all flex flex-col justify-between group overflow-hidden"
             >
               <div>
-                <div className="flex items-center justify-between border-b border-brass/20 pb-3 mb-4">
-                  <span className="text-[10px] font-mono font-bold text-brass uppercase bg-brass/10 px-2 py-0.5 rounded">
+                <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+                  <span className="text-[10px] font-mono font-bold text-amber-800 uppercase bg-amber-50 border border-amber-200 px-2 py-0.5 rounded">
                     {item.tag}
                   </span>
-                  <span className="text-xs font-mono text-ink-soft">{item.code}</span>
+                  <span className="text-xs font-mono text-slate-500">{item.code}</span>
                 </div>
 
-                <div className="h-48 rounded-xl overflow-hidden mb-4 border border-brass/20 relative shadow-inner">
+                <div className="h-48 rounded-xl overflow-hidden mb-4 border border-slate-200 relative shadow-inner">
                   <img
                     src={item.image}
                     alt={item.title}
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-sky-ink-deep/80 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute bottom-2.5 left-3 right-3 text-cloud text-xs font-mono font-semibold truncate">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-2.5 left-3 right-3 text-white text-xs font-mono font-semibold truncate">
                     {item.title}
                   </div>
                 </div>
 
-                <h3 className="font-display font-bold text-lg text-ink mb-2">{item.title}</h3>
-                <p className="text-xs sm:text-sm text-ink-soft leading-relaxed">{item.desc}</p>
+                <h3 className="font-display font-bold text-lg text-slate-900 mb-2">{item.title}</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{item.desc}</p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-dashed border-brass/20 text-[11px] font-mono text-brass flex items-center justify-between">
+              <div className="mt-4 pt-3 border-t border-dashed border-slate-200 text-[11px] font-mono text-amber-700 flex items-center justify-between">
                 <span>✓ Verified Operations Log</span>
-                <span className="text-[10px] text-ink-soft font-mono">DELHI HQ</span>
+                <span className="text-[10px] text-slate-500 font-mono">DELHI HQ</span>
               </div>
             </div>
           ))}

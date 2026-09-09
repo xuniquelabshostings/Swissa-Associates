@@ -36,19 +36,19 @@ export const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ currentConte
     <div className="fixed bottom-6 right-6 z-50 flex items-end flex-col select-none">
       {/* Interactive Tooltip Card */}
       {showTooltip && (
-        <div className="mb-3 w-72 bg-sky-ink-deep text-cloud p-4 rounded-xl border border-brass/40 shadow-2xl backdrop-blur-md animate-fade-in relative">
+        <div className="mb-3 w-72 bg-slate-900 text-white p-4 rounded-xl border border-slate-700 shadow-2xl backdrop-blur-md animate-fade-in relative">
           <button
             onClick={() => setShowTooltip(false)}
-            className="absolute top-2 right-2 text-cloud/50 hover:text-cloud text-xs p-1"
+            className="absolute top-2 right-2 text-slate-400 hover:text-white text-xs p-1"
             aria-label="Close message"
           >
             <X className="w-3.5 h-3.5" />
           </button>
           <div className="flex items-center space-x-2.5 mb-2">
             <div className="w-3 h-3 rounded-full bg-whatsapp-green animate-ping" />
-            <span className="text-xs font-mono text-brass font-bold uppercase">Online Consular Desk</span>
+            <span className="text-xs font-mono text-amber-400 font-bold uppercase">Online Consular Desk</span>
           </div>
-          <p className="text-xs text-cloud/90 mb-3 leading-snug">
+          <p className="text-xs text-slate-200 mb-3 leading-snug">
             Need fast-track visa stamping or manpower consultation? We reply within minutes on business hours.
           </p>
           <a
@@ -77,7 +77,7 @@ export const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ currentConte
         </a>
 
         {/* Hover Pill Label */}
-        <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-sky-ink-deep border border-brass/30 text-cloud text-xs font-mono font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+        <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white text-xs font-mono font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
           Chat on WhatsApp
         </span>
       </div>

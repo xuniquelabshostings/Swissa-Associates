@@ -48,7 +48,7 @@ export const MainScrollCanvas: React.FC<MainScrollCanvasProps> = ({
 
     // 1. Scene & Camera Setup
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x071A33, 0.009);
+    scene.fog = new THREE.FogExp2(0xF8FAFC, 0.002);
 
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
     camera.position.set(0, 2.5, 23);
@@ -66,23 +66,23 @@ export const MainScrollCanvas: React.FC<MainScrollCanvasProps> = ({
     container.appendChild(renderer.domElement);
 
     // 3. Realistic Sunlight & High-Altitude Illumination
-    const ambientLight = new THREE.AmbientLight(0xdbeafe, 0.95);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
     scene.add(ambientLight);
 
-    const sunLight = new THREE.DirectionalLight(0xfff5e6, 2.4);
+    const sunLight = new THREE.DirectionalLight(0xfff8ee, 2.6);
     sunLight.position.set(25, 30, 20);
     scene.add(sunLight);
 
-    const goldAtmosphereLight = new THREE.DirectionalLight(0xC89B3C, 1.4);
+    const goldAtmosphereLight = new THREE.DirectionalLight(0xB45309, 1.0);
     goldAtmosphereLight.position.set(-25, -12, -15);
     scene.add(goldAtmosphereLight);
 
-    const navyBackdropLight = new THREE.PointLight(0x0B2545, 5, 70);
-    navyBackdropLight.position.set(0, -18, 12);
-    scene.add(navyBackdropLight);
+    const softBackdropLight = new THREE.PointLight(0x94a3b8, 2, 70);
+    softBackdropLight.position.set(0, -18, 12);
+    scene.add(softBackdropLight);
 
-    // 4. Background High Altitude Stars & Flight Particles
-    const starCount = 380;
+    // 4. Background High Altitude Particles
+    const starCount = 250;
     const starGeo = new THREE.BufferGeometry();
     const starPos = new Float32Array(starCount * 3);
     for (let i = 0; i < starCount; i++) {
@@ -92,10 +92,10 @@ export const MainScrollCanvas: React.FC<MainScrollCanvasProps> = ({
     }
     starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
     const starMat = new THREE.PointsMaterial({
-      color: 0xC89B3C,
-      size: 0.18,
+      color: 0xB45309,
+      size: 0.15,
       transparent: true,
-      opacity: 0.38,
+      opacity: 0.25,
     });
     const starField = new THREE.Points(starGeo, starMat);
     scene.add(starField);

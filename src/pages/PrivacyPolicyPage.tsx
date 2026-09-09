@@ -4,19 +4,19 @@ import { COMPANY_DETAILS } from '../data/siteData';
 
 export const PrivacyPolicyPage: React.FC = () => {
   return (
-    <div className="pt-24 min-h-screen bg-cloud">
+    <div className="pt-24 min-h-screen bg-slate-50">
       
       {/* Header */}
-      <section className="bg-sky-ink text-cloud py-16 sm:py-20 border-b border-brass/30">
+      <section className="bg-gradient-to-b from-slate-100 via-slate-50 to-white text-slate-900 py-16 sm:py-20 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-xs font-mono uppercase tracking-widest text-brass font-bold block mb-2">
+            <span className="inline-block px-3 py-1 rounded-full bg-amber-50 border border-amber-300 text-amber-800 text-xs font-mono font-bold tracking-widest uppercase mb-4">
               COMPLIANCE & DATA INTEGRITY
             </span>
-            <h1 className="text-3xl sm:text-5xl font-bold font-display text-cloud mb-6">
+            <h1 className="text-3xl sm:text-5xl font-bold font-display text-slate-900 mb-6">
               Privacy Policy & Document Custody.
             </h1>
-            <p className="text-base sm:text-lg text-cloud/80 leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
               How Swisa Associates protects your personal data, biometric files, original passports, and communication consent.
             </p>
           </div>
@@ -25,10 +25,10 @@ export const PrivacyPolicyPage: React.FC = () => {
 
       {/* Main Legal Content */}
       <section className="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white p-8 sm:p-12 rounded-2xl border border-brass/30 shadow-sm space-y-8 text-sm text-ink-soft leading-relaxed">
+        <div className="bg-white p-8 sm:p-12 rounded-2xl border border-slate-200 shadow-sm space-y-8 text-sm text-slate-600 leading-relaxed">
           
           <div>
-            <h2 className="text-xl font-bold font-display text-ink mb-3">
+            <h2 className="text-xl font-bold font-display text-slate-900 mb-3">
               1. Overview & Commitment
             </h2>
             <p>
@@ -37,13 +37,13 @@ export const PrivacyPolicyPage: React.FC = () => {
           </div>
 
           <div>
-            <h2 className="text-xl font-bold font-display text-ink mb-3">
+            <h2 className="text-xl font-bold font-display text-slate-900 mb-3">
               2. Data We Collect
             </h2>
             <p className="mb-2">
               To process visa stamping, emigration clearance, and recruitment services, we collect:
             </p>
-            <ul className="list-disc pl-5 space-y-1 font-mono text-xs text-ink">
+            <ul className="list-disc pl-5 space-y-1 font-mono text-xs text-slate-700">
               <li>Original passport details, nationality, and biometric photographs.</li>
               <li>Academic degrees, diplomas, and birth/marriage certificates for attestation.</li>
               <li>Police Clearance Certificates (PCC) and GAMCA/Wafid medical fitness reports.</li>
@@ -53,13 +53,13 @@ export const PrivacyPolicyPage: React.FC = () => {
           </div>
 
           <div>
-            <h2 className="text-xl font-bold font-display text-ink mb-3">
+            <h2 className="text-xl font-bold font-display text-slate-900 mb-3">
               3. Purpose of Processing & Embassy Disclosures
             </h2>
             <p>
               Your personal data is solely utilized to execute your chosen consular and travel services:
             </p>
-            <ul className="list-disc pl-5 space-y-1 font-mono text-xs text-ink mt-2">
+            <ul className="list-disc pl-5 space-y-1 font-mono text-xs text-slate-700 mt-2">
               <li>Lodging visa applications with the Royal Embassy of Saudi Arabia, Embassy of Kuwait, and diplomatic consulates.</li>
               <li>Verifying documents with State HRD, Sub-Divisional Magistrates (SDM), and the Ministry of External Affairs (MEA).</li>
               <li>Booking flight reservations and issuing airline PNRs.</li>
@@ -68,7 +68,7 @@ export const PrivacyPolicyPage: React.FC = () => {
           </div>
 
           <div>
-            <h2 className="text-xl font-bold font-display text-ink mb-3">
+            <h2 className="text-xl font-bold font-display text-slate-900 mb-3">
               4. Physical Document Custody & Courier Security
             </h2>
             <p>
@@ -77,7 +77,7 @@ export const PrivacyPolicyPage: React.FC = () => {
           </div>
 
           <div>
-            <h2 className="text-xl font-bold font-display text-ink mb-3">
+            <h2 className="text-xl font-bold font-display text-slate-900 mb-3">
               5. WhatsApp & Digital Communications Consent
             </h2>
             <p>
@@ -86,13 +86,13 @@ export const PrivacyPolicyPage: React.FC = () => {
           </div>
 
           <div>
-            <h2 className="text-xl font-bold font-display text-ink mb-3">
+            <h2 className="text-xl font-bold font-display text-slate-900 mb-3">
               6. Grievance Officer & Contact
             </h2>
             <p>
               For data protection questions, rectification requests, or custody inquiries, contact our legal desk:
             </p>
-            <div className="mt-3 p-4 rounded-xl bg-cloud border border-brass/20 font-mono text-xs text-ink space-y-1">
+            <div className="mt-3 p-4 rounded-xl bg-slate-50 border border-slate-200 font-mono text-xs text-slate-800 space-y-1">
               <div><strong>Company:</strong> Swisa Associates</div>
               <div><strong>Email:</strong> {COMPANY_DETAILS.emails.general}</div>
               <div><strong>Phone:</strong> {COMPANY_DETAILS.phoneSecondary}</div>

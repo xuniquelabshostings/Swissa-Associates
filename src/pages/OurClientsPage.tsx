@@ -42,19 +42,19 @@ export const OurClientsPage: React.FC<OurClientsPageProps> = ({ onNavigate, onOp
   ];
 
   return (
-    <div className="pt-24 min-h-screen bg-cloud">
+    <div className="pt-24 min-h-screen bg-slate-50">
       
       {/* Editorial Header */}
-      <section className="bg-sky-ink text-cloud py-16 sm:py-20 border-b border-brass/30">
+      <section className="bg-gradient-to-b from-slate-100 via-slate-50 to-white text-slate-900 py-16 sm:py-20 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl reveal-on-scroll">
-            <span className="text-xs font-mono uppercase tracking-widest text-brass font-bold block mb-2">
+            <span className="text-xs font-mono uppercase tracking-widest text-amber-700 font-bold block mb-2">
               CLIENTS & TRUST CORRIDORS
             </span>
-            <h1 className="text-3xl sm:text-5xl font-bold font-display text-cloud mb-6">
+            <h1 className="text-3xl sm:text-5xl font-bold font-display text-slate-900 mb-6">
               Trusted by 1,500+ Individuals & Global Contractors.
             </h1>
-            <p className="text-base sm:text-lg text-cloud/80 leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
               Over the last 12 years, Swisa Associates has completed 990+ projects, delivering consular visa stamping for individual families and mobilizing turnkey workforces for renowned industrial contractors.
             </p>
           </div>
@@ -64,15 +64,15 @@ export const OurClientsPage: React.FC<OurClientsPageProps> = ({ onNavigate, onOp
       {/* ========================================================================= */}
       {/* CLIENT LOGOS HORIZONTAL MARQUEE SECTION */}
       {/* ========================================================================= */}
-      <section className="py-14 bg-white border-b border-brass/20 overflow-hidden">
+      <section className="py-14 bg-white border-b border-slate-200 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center reveal-on-scroll">
-          <span className="text-xs font-mono uppercase tracking-widest text-brass font-bold block mb-1">
+          <span className="text-xs font-mono uppercase tracking-widest text-amber-700 font-bold block mb-1">
             VERIFIED CORPORATE PORTFOLIO
           </span>
-          <h2 className="text-2xl sm:text-3xl font-bold font-display text-ink">
+          <h2 className="text-2xl sm:text-3xl font-bold font-display text-slate-900">
             Our Esteemed Clients & Recruitment Partners
           </h2>
-          <p className="text-xs sm:text-sm text-ink-soft mt-1">
+          <p className="text-xs sm:text-sm text-slate-600 mt-1">
             Serving leading EPC contractors, oilfield operators, and facility management conglomerates across the Middle East.
           </p>
         </div>
@@ -88,7 +88,7 @@ export const OurClientsPage: React.FC<OurClientsPageProps> = ({ onNavigate, onOp
               {clientLogos.concat(clientLogos).concat(clientLogos).map((src, i) => (
                 <div
                   key={i}
-                  className="w-40 sm:w-48 h-24 sm:h-28 bg-cloud/70 rounded-2xl border border-brass/25 shadow-sm p-4 flex items-center justify-center hover-lift transition-all shrink-0 hover:border-brass hover:bg-white"
+                  className="w-40 sm:w-48 h-24 sm:h-28 bg-slate-50 rounded-2xl border border-slate-200 shadow-sm p-4 flex items-center justify-center hover-lift transition-all shrink-0 hover:border-amber-400 hover:bg-white"
                 >
                   <img
                     src={src}
@@ -109,10 +109,10 @@ export const OurClientsPage: React.FC<OurClientsPageProps> = ({ onNavigate, onOp
           {corporateSectors.map((sector, idx) => (
             <div
               key={idx}
-              className={`bg-white rounded-2xl p-8 border border-brass/30 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group overflow-hidden hover-lift card-shine reveal-on-scroll stagger-${idx + 1}`}
+              className={`bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-lg hover:border-amber-500 transition-all flex flex-col justify-between group overflow-hidden hover-lift card-shine reveal-on-scroll stagger-${idx + 1}`}
             >
               <div>
-                <div className="h-52 -mx-8 -mt-8 mb-6 overflow-hidden relative border-b border-brass/20 bg-sky-ink-deep">
+                <div className="h-52 -mx-8 -mt-8 mb-6 overflow-hidden relative border-b border-slate-100 bg-slate-100">
                   <AnimatedImage
                     src={sector.image}
                     fallbackSrc="https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?w=800&auto=format&fit=crop&q=80"
@@ -120,41 +120,41 @@ export const OurClientsPage: React.FC<OurClientsPageProps> = ({ onNavigate, onOp
                     wrapperClassName="w-full h-full"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-sky-ink-deep/85 via-transparent to-transparent z-10 pointer-events-none" />
-                  <div className="absolute top-3 left-4 bg-sky-ink-deep/90 backdrop-blur-md px-3 py-1 rounded text-[10px] font-mono text-brass font-bold uppercase border border-brass/30 z-20">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent z-10 pointer-events-none" />
+                  <div className="absolute top-3 left-4 bg-slate-900/90 backdrop-blur-md px-3 py-1 rounded text-[10px] font-mono text-amber-400 font-bold uppercase border border-slate-800 z-20 shadow-sm">
                     DEPLOYMENT PROGRAM 0{idx + 1}
                   </div>
-                  <div className="absolute bottom-3 right-4 bg-brass text-sky-ink-deep px-3 py-1 rounded text-[11px] font-mono font-bold shadow-md z-20">
+                  <div className="absolute bottom-3 right-4 bg-amber-600 text-white px-3 py-1 rounded text-[11px] font-mono font-bold shadow-md z-20">
                     {sector.metrics}
                   </div>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-bold font-display text-ink mb-3 group-hover:text-brass transition-colors">
+                <h3 className="text-xl sm:text-2xl font-bold font-display text-slate-900 mb-3 group-hover:text-amber-700 transition-colors">
                   {sector.title}
                 </h3>
-                <p className="text-sm text-ink-soft leading-relaxed">
+                <p className="text-sm text-slate-600 leading-relaxed">
                   {sector.scope}
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-dashed border-brass/20 flex items-center justify-between text-xs font-mono">
-                <span className="text-ink-soft">Consular Certified</span>
-                <span className="text-brass font-bold">Verified Reference</span>
+              <div className="mt-6 pt-4 border-t border-dashed border-slate-200 flex items-center justify-between text-xs font-mono">
+                <span className="text-slate-500">Consular Certified</span>
+                <span className="text-amber-700 font-bold">Verified Reference</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Corporate Trust Protocol */}
-        <div className="bg-sky-ink-deep text-cloud rounded-2xl border border-brass/40 p-8 sm:p-10 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8 reveal-on-scroll hover-lift card-shine">
+        <div className="bg-slate-900 text-white rounded-2xl border border-slate-800 p-8 sm:p-10 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-8 reveal-on-scroll hover-lift card-shine">
           <div className="space-y-3">
-            <span className="text-xs font-mono uppercase text-brass font-bold">
+            <span className="text-xs font-mono uppercase text-amber-400 font-bold">
               CORPORATE PARTNERSHIP
             </span>
-            <h3 className="text-2xl sm:text-3xl font-bold font-display text-cloud">
+            <h3 className="text-2xl sm:text-3xl font-bold font-display text-white">
               Looking for a Reliable Consular & Recruitment Partner in India?
             </h3>
-            <p className="text-sm text-cloud/75 max-w-2xl leading-relaxed">
+            <p className="text-sm text-slate-300 max-w-2xl leading-relaxed">
               We provide enterprise procurement managers and HR executives with dedicated service-level agreements, transparent compliance reporting, and guaranteed candidate replacements.
             </p>
           </div>
@@ -162,7 +162,7 @@ export const OurClientsPage: React.FC<OurClientsPageProps> = ({ onNavigate, onOp
           <div className="shrink-0 flex flex-col sm:flex-row gap-3">
             <button
               onClick={() => onOpenEnquiry('Corporate Client Partnership')}
-              className="px-6 py-3.5 bg-brass hover:bg-brass-soft text-sky-ink font-mono font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-brass-sm hover-lift"
+              className="px-6 py-3.5 bg-amber-600 hover:bg-amber-700 text-white font-mono font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-sm hover-lift"
             >
               Request Corporate Profile
             </button>
@@ -170,7 +170,7 @@ export const OurClientsPage: React.FC<OurClientsPageProps> = ({ onNavigate, onOp
               href={`https://wa.me/${COMPANY_DETAILS.whatsappNumber}?text=${encodeURIComponent('Hello Swisa Associates, we would like to discuss corporate consular partnership.')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3.5 bg-whatsapp-green hover:bg-emerald-600 text-white font-mono font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center space-x-2 hover-lift"
+              className="px-6 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-mono font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center space-x-2 shadow-sm hover-lift"
             >
               <WhatsAppIcon className="w-4 h-4 fill-white text-white" />
               <span>WhatsApp Director</span>

@@ -40,32 +40,32 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-sky-ink-deep/80 backdrop-blur-md animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-fade-in">
       <div 
-        className="relative w-full max-w-xl bg-cloud border border-brass/40 rounded-2xl shadow-2xl overflow-hidden"
+        className="relative w-full max-w-xl bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Top Header styled as Flight Pass Header */}
-        <div className="bg-sky-ink px-6 py-4 text-cloud flex items-center justify-between border-b border-brass/30">
+        <div className="bg-slate-900 px-6 py-4 text-white flex items-center justify-between border-b border-slate-800">
           <div className="flex items-center space-x-3">
-            <div className="h-10 w-auto bg-white rounded-md p-1 border border-brass/40 flex items-center justify-center shrink-0">
+            <div className="h-10 w-auto bg-white rounded-md p-1 border border-slate-200 flex items-center justify-center shrink-0">
               <img src="/logo.png" alt="Swisa Logo" className="h-full w-auto object-contain max-w-[80px]" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <span className="w-2 h-2 rounded-full bg-brass animate-pulse" />
-                <span className="text-[10px] font-mono uppercase tracking-widest text-brass font-bold">
+                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400 font-bold">
                   Consular Assessment Desk
                 </span>
               </div>
-              <h3 className="text-base sm:text-lg font-bold font-display mt-0.5">
+              <h3 className="text-base sm:text-lg font-bold font-display mt-0.5 text-white">
                 Free Visa & Immigration Assessment
               </h3>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-cloud/70 hover:text-cloud hover:bg-white/10 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
             aria-label="Close"
           >
             <X className="w-5 h-5" />
@@ -79,22 +79,22 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
               <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
                 <CheckCircle className="w-10 h-10" />
               </div>
-              <h4 className="text-2xl font-bold font-display text-sky-ink">
+              <h4 className="text-2xl font-bold font-display text-slate-900">
                 Application Dossier Received
               </h4>
-              <p className="text-sm text-ink-soft max-w-md mx-auto">
-                Thank you, <strong className="text-ink">{name}</strong>. Our designated visa officer will review your requirements and respond within <strong>24 business hours</strong>.
+              <p className="text-sm text-slate-600 max-w-md mx-auto">
+                Thank you, <strong className="text-slate-900">{name}</strong>. Our designated visa officer will review your requirements and respond within <strong>24 business hours</strong>.
               </p>
               <div className="pt-4 flex justify-center space-x-3">
                 <button
                   onClick={onClose}
-                  className="px-6 py-2 rounded-lg bg-sky-ink text-cloud font-mono text-xs font-semibold"
+                  className="px-6 py-2 rounded-lg bg-slate-900 text-white font-mono text-xs font-semibold hover:bg-slate-800 transition-colors"
                 >
                   Close Window
                 </button>
                 <button
                   onClick={handleWhatsAppSubmit}
-                  className="px-6 py-2 rounded-lg bg-whatsapp-green text-white font-mono text-xs font-semibold flex items-center space-x-1.5"
+                  className="px-6 py-2 rounded-lg bg-whatsapp-green text-white font-mono text-xs font-semibold flex items-center space-x-1.5 hover:bg-emerald-600 transition-colors"
                 >
                   <WhatsAppIcon className="w-3.5 h-3.5 fill-white text-white" />
                   <span>Send on WhatsApp</span>
@@ -105,7 +105,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-mono uppercase text-ink-soft font-bold mb-1">
+                  <label className="block text-xs font-mono uppercase text-slate-600 font-bold mb-1">
                     Your Full Name *
                   </label>
                   <input
@@ -114,12 +114,12 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="e.g. Rahul Sharma"
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-brass/30 bg-white text-sm text-ink focus:outline-none focus:ring-2 focus:ring-brass"
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono uppercase text-ink-soft font-bold mb-1">
+                  <label className="block text-xs font-mono uppercase text-slate-600 font-bold mb-1">
                     Phone / WhatsApp Number *
                   </label>
                   <input
@@ -128,14 +128,14 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+91 98110 84530"
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-brass/30 bg-white text-sm text-ink focus:outline-none focus:ring-2 focus:ring-brass"
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-colors"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-mono uppercase text-ink-soft font-bold mb-1">
+                  <label className="block text-xs font-mono uppercase text-slate-600 font-bold mb-1">
                     Email Address *
                   </label>
                   <input
@@ -144,18 +144,18 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@example.com"
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-brass/30 bg-white text-sm text-ink focus:outline-none focus:ring-2 focus:ring-brass"
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono uppercase text-ink-soft font-bold mb-1">
+                  <label className="block text-xs font-mono uppercase text-slate-600 font-bold mb-1">
                     Destination Country
                   </label>
                   <select
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-brass/30 bg-white text-sm text-ink focus:outline-none focus:ring-2 focus:ring-brass"
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-colors"
                   >
                     {DESTINATION_COUNTRIES.map((c) => (
                       <option key={c.id} value={c.name}>
@@ -168,13 +168,13 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
               </div>
 
               <div>
-                <label className="block text-xs font-mono uppercase text-ink-soft font-bold mb-1">
+                <label className="block text-xs font-mono uppercase text-slate-600 font-bold mb-1">
                   Required Service
                 </label>
                 <select
                   value={service}
                   onChange={(e) => setService(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-brass/30 bg-white text-sm text-ink focus:outline-none focus:ring-2 focus:ring-brass"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-colors"
                 >
                   {SERVICES_DATA.map((s) => (
                     <option key={s.id} value={s.title}>
@@ -185,7 +185,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
               </div>
 
               <div>
-                <label className="block text-xs font-mono uppercase text-ink-soft font-bold mb-1">
+                <label className="block text-xs font-mono uppercase text-slate-600 font-bold mb-1">
                   Message / Case Details
                 </label>
                 <textarea
@@ -193,18 +193,18 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Mention visa category (employment, family, visitor), current status, or trade details..."
-                  className="w-full px-3.5 py-2 rounded-lg border border-brass/30 bg-white text-sm text-ink focus:outline-none focus:ring-2 focus:ring-brass resize-none"
+                  className="w-full px-3.5 py-2 rounded-lg border border-slate-200 bg-slate-50 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white resize-none transition-colors"
                 />
               </div>
 
               {/* Trust Indicators */}
-              <div className="flex items-center justify-between text-[11px] text-ink-soft font-mono py-1 border-t border-brass/15">
+              <div className="flex items-center justify-between text-[11px] text-slate-500 font-mono py-1 border-t border-slate-200">
                 <div className="flex items-center space-x-1">
-                  <Shield className="w-3.5 h-3.5 text-brass" />
+                  <Shield className="w-3.5 h-3.5 text-amber-600" />
                   <span>Confidential Embassy Audited</span>
                 </div>
                 <div className="flex items-center space-x-1">
-                  <Clock className="w-3.5 h-3.5 text-brass" />
+                  <Clock className="w-3.5 h-3.5 text-amber-600" />
                   <span>24-Hour Guaranteed Turnaround</span>
                 </div>
               </div>
@@ -213,16 +213,16 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 <button
                   type="submit"
-                  className="w-full py-3 bg-sky-ink hover:bg-sky-ink-deep text-cloud rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center space-x-2 shadow-md"
+                  className="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center space-x-2 shadow-sm"
                 >
-                  <Send className="w-4 h-4 text-brass" />
+                  <Send className="w-4 h-4 text-amber-400" />
                   <span>Submit Inquiry Form</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={handleWhatsAppSubmit}
-                  className="w-full py-3 bg-whatsapp-green hover:bg-emerald-600 text-white rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center space-x-2 shadow-md"
+                  className="w-full py-3 bg-whatsapp-green hover:bg-emerald-600 text-white rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center space-x-2 shadow-sm"
                 >
                   <WhatsAppIcon className="w-4 h-4 fill-white text-white" />
                   <span>Instant WhatsApp Direct</span>

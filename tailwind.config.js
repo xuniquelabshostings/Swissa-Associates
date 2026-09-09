@@ -7,16 +7,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        'sky-ink': '#0B2545',
-        'sky-ink-deep': '#071A33',
-        'brass': '#C89B3C',
-        'brass-soft': '#E0BE72',
-        'cloud': '#F5F4EF',
-        'dune': '#D8C7A1',
-        'ink': '#10161F',
-        'ink-soft': '#4A5568',
-        'whatsapp-green': '#25D366',
-        'line-gold': 'rgba(200, 155, 60, 0.25)',
+        'sky-ink': '#0F172A',
+        'sky-ink-deep': '#020617',
+        'brass': '#B45309',
+        'brass-soft': '#D97706',
+        'cloud': '#F8FAFC',
+        'dune': '#E2E8F0',
+        'ink': '#0F172A',
+        'ink-soft': '#475569',
+        'whatsapp-green': '#16A34A',
+        'line-gold': 'rgba(180, 83, 9, 0.25)',
       },
       fontFamily: {
         display: ['"Space Grotesk"', 'sans-serif'],
@@ -24,10 +24,10 @@ export default {
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       boxShadow: {
-        'brass-glow': '0 0 25px rgba(200, 155, 60, 0.25)',
-        'brass-sm': '0 0 10px rgba(200, 155, 60, 0.2)',
-        'flight-card': '0 10px 30px -10px rgba(7, 26, 51, 0.15)',
-        'card-hover': '0 20px 35px -10px rgba(7, 26, 51, 0.2), 0 0 15px rgba(200, 155, 60, 0.2)',
+        'brass-glow': '0 0 20px rgba(180, 83, 9, 0.2)',
+        'brass-sm': '0 0 8px rgba(180, 83, 9, 0.15)',
+        'flight-card': '0 10px 30px -10px rgba(15, 23, 42, 0.08)',
+        'card-hover': '0 20px 35px -10px rgba(15, 23, 42, 0.1), 0 0 15px rgba(180, 83, 9, 0.1)',
       },
       animation: {
         'float-slow': 'float 6s ease-in-out infinite',
