@@ -1,0 +1,298 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sky-ink: #0B2545;
+  --sky-ink-deep: #071A33;
+  --brass: #C89B3C;
+  --brass-soft: #E0BE72;
+  --cloud: #F5F4EF;
+  --dune: #D8C7A1;
+  --ink: #10161F;
+  --ink-soft: #4A5568;
+  --whatsapp-green: #25D366;
+  --line: rgba(200, 155, 60, 0.25);
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  body {
+    background-color: var(--cloud);
+    color: var(--ink);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  .font-mono-tag {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Claude editorial aesthetic enhancements */
+.editorial-lead {
+  font-family: var(--font-display);
+  line-height: 1.15;
+}
+
+/* Boarding pass ticket stub motif */
+.ticket-card {
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid rgba(200, 155, 60, 0.22);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ticket-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(200, 155, 60, 0.6);
+  box-shadow: 0 12px 30px -10px rgba(11, 37, 69, 0.12), 0 0 15px rgba(200, 155, 60, 0.15);
+}
+
+/* Ticket notch cutout left & right */
+.ticket-stub-notches::before,
+.ticket-stub-notches::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 24px;
+  background-color: var(--cloud);
+  border: 1px solid rgba(200, 155, 60, 0.3);
+  transform: translateY(-50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.ticket-stub-notches::before {
+  left: -1px;
+  border-left: none;
+  border-radius: 0 14px 14px 0;
+}
+
+.ticket-stub-notches::after {
+  right: -1px;
+  border-right: none;
+  border-radius: 14px 0 0 14px;
+}
+
+/* Perforated hairline line */
+.perforated-divider {
+  background-image: linear-gradient(to right, rgba(200, 155, 60, 0.4) 40%, rgba(255, 255, 255, 0) 0%);
+  background-position: bottom;
+  background-size: 8px 1px;
+  background-repeat: repeat-x;
+}
+
+.perforated-vertical {
+  background-image: linear-gradient(to bottom, rgba(200, 155, 60, 0.4) 40%, rgba(255, 255, 255, 0) 0%);
+  background-position: right;
+  background-size: 1px 8px;
+  background-repeat: repeat-y;
+}
+
+/* Runway dashed marking strip */
+.runway-line {
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(200, 155, 60, 0.5) 0px,
+    rgba(200, 155, 60, 0.5) 20px,
+    transparent 20px,
+    transparent 36px
+  );
+  height: 2px;
+  width: 100%;
+}
+
+/* Pulse animation for WhatsApp */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.whatsapp-pulse {
+  animation: pulse-ring 2.5s infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sky-ink-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brass);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brass-soft);
+}
+
+/* ========================================================================= */
+/* Scroll Reveal & Entrance Animations */
+/* ========================================================================= */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-left.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(36px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-right.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-scale.is-revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger delays */
+.stagger-1 { transition-delay: 80ms; }
+.stagger-2 { transition-delay: 160ms; }
+.stagger-3 { transition-delay: 240ms; }
+.stagger-4 { transition-delay: 320ms; }
+.stagger-5 { transition-delay: 400ms; }
+.stagger-6 { transition-delay: 480ms; }
+.stagger-7 { transition-delay: 560ms; }
+.stagger-8 { transition-delay: 640ms; }
+
+/* Interactive Hover Lift & Glow */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px -10px rgba(11, 37, 69, 0.16), 0 0 20px rgba(200, 155, 60, 0.2);
+}
+
+/* Shimmer Light Scan Effect */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.75s ease;
+  pointer-events: none;
+}
+
+.card-shine:hover::after {
+  transform: translateX(100%);
+}
+
+/* Page entrance */
+.page-fade-in {
+  animation: pageFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Infinite horizontal marquee */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 40s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-fast {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 25s linear infinite;
+}
+
+.animate-marquee-fast:hover {
+  animation-play-state: paused;
+}
+
