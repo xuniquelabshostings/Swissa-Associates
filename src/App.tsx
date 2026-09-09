@@ -18,26 +18,65 @@ import { FAQPage } from './pages/FAQPage';
 import { SupportPage } from './pages/SupportPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 
+const getNormalizedPath = (): string => {
+  // 1. Check if redirected by 404.html SPA handler (?p=...)
+  const urlParams = new URLSearchParams(window.location.search);
+  const redirectParam = urlParams.get('p');
+  if (redirectParam) {
+    const cleanUrl = window.location.pathname + window.location.hash;
+    window.history.replaceState(null, '', cleanUrl);
+    return redirectParam.startsWith('/') ? redirectParam : `/${redirectParam}`;
+  }
+
+  // 2. Check for hash route (#/about)
+  if (window.location.hash) {
+    const hash = window.location.hash.replace(/^#/, '');
+    if (hash.startsWith('/')) return hash;
+  }
+
+  // 3. Normal path: strip repository subpath if present
+  let path = window.location.pathname || '/';
+  const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+  if (base && base !== '.' && path.startsWith(base)) {
+    path = path.slice(base.length);
+  }
+  if (path.startsWith('/Swissa-Associates')) {
+    path = path.replace(/^\/Swissa-Associates/, '');
+  }
+
+  return path || '/';
+};
+
 export function App() {
   const [currentPath, setCurrentPath] = useState<string>(() => {
-    return window.location.pathname || '/';
+    return getNormalizedPath();
   });
 
   const [enquiryModalOpen, setEnquiryModalOpen] = useState<boolean>(false);
   const [enquiryService, setEnquiryService] = useState<string>('');
 
-  // Handle browser back/forward buttons
+  // Handle browser back/forward and hash changes
   useEffect(() => {
     const handlePopState = () => {
-      setCurrentPath(window.location.pathname || '/');
+      setCurrentPath(getNormalizedPath());
     };
     window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('hashchange', handlePopState);
+    };
   }, []);
 
   const navigate = (path: string) => {
-    window.history.pushState({}, '', path);
-    setCurrentPath(path);
+    const cleanPath = path.startsWith('/') ? path : `/${path}`;
+    const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+    const isRepoSubpath = window.location.pathname.startsWith('/Swissa-Associates');
+    const activeBase = (base && base !== '.') ? base : (isRepoSubpath ? '/Swissa-Associates' : '');
+    const fullTarget = activeBase ? `${activeBase}${cleanPath}` : cleanPath;
+
+    window.history.pushState({}, '', fullTarget);
+    setCurrentPath(cleanPath);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

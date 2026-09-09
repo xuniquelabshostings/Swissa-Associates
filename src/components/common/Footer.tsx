@@ -1,4 +1,5 @@
 import React from 'react';
+import { getAssetUrl } from '../../utils/assetHelper';
 import { 
   MapPin, 
   Phone, 
@@ -37,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnquiry }) => 
             <div className="flex items-center space-x-3">
               <div className="h-12 w-auto bg-white rounded-lg p-1 border border-brass/40 shadow-brass-sm flex items-center justify-center overflow-hidden">
                 <img 
-                  src="/logo.png" 
+                  src={getAssetUrl('logo.png')} 
                   alt="Swisa Associates Official Logo" 
                   className="h-full w-auto object-contain max-w-[100px]"
                 />

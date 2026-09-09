@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { createRealisticAirliner } from './RealAirplaneModel';
+import { getAssetUrl } from '../../utils/assetHelper';
 
 interface ServiceMicroCanvasProps {
   serviceId: string;
@@ -494,7 +495,7 @@ export const ServiceMicroCanvas: React.FC<ServiceMicroCanvasProps> = ({ serviceI
       scene.add(miniGlobe);
 
       const textureLoader = new THREE.TextureLoader();
-      const earthDayMap = textureLoader.load('/textures/earth-map.jpg');
+      const earthDayMap = textureLoader.load(getAssetUrl('textures/earth-map.jpg'));
       earthDayMap.colorSpace = THREE.SRGBColorSpace;
 
       const sphereGeo = new THREE.SphereGeometry(2.3, 48, 48);
@@ -517,7 +518,7 @@ export const ServiceMicroCanvas: React.FC<ServiceMicroCanvasProps> = ({ serviceI
       const atmos = new THREE.Mesh(atmosGeo, atmosMat);
       miniGlobe.add(atmos);
 
-      const airliner = createRealisticAirliner({ scale: 0.35, texturePath: '/airplane.png' });
+      const airliner = createRealisticAirliner({ scale: 0.35, texturePath: getAssetUrl('airplane.png') });
       scene.add(airliner.root);
 
       const animateGlobeFlight = () => {

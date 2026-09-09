@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getAssetUrl } from '../../utils/assetHelper';
 import { 
   Phone, 
   ChevronDown, 
@@ -100,7 +101,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate, onOpenE
           >
             <div className="h-11 sm:h-12 w-auto bg-white rounded-lg p-1 border border-slate-200 shadow-sm flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden">
               <img 
-                src="/logo.png" 
+                src={getAssetUrl('logo.png')} 
                 alt="Swisa Associates Official Logo" 
                 className="h-full w-auto object-contain max-w-[90px] sm:max-w-[100px]"
               />

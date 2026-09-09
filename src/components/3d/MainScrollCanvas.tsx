@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { createPhotorealisticSwisaAirliner, AirlinerComponents } from './RealAirplaneModel';
 import { DESTINATION_COUNTRIES } from '../../data/siteData';
+import { getAssetUrl } from '../../utils/assetHelper';
 
 interface MainScrollCanvasProps {
   selectedCountryId?: string | null;
@@ -109,12 +110,12 @@ export const MainScrollCanvas: React.FC<MainScrollCanvasProps> = ({
     const textureLoader = new THREE.TextureLoader();
 
     // Load real Earth day map & night lights
-    const earthDayMap = textureLoader.load('/textures/earth-map.jpg');
+    const earthDayMap = textureLoader.load(getAssetUrl('textures/earth-map.jpg'));
     earthDayMap.colorSpace = THREE.SRGBColorSpace;
     earthDayMap.minFilter = THREE.LinearMipmapLinearFilter;
     earthDayMap.magFilter = THREE.LinearFilter;
 
-    const earthNightMap = textureLoader.load('/textures/earth-night.jpg');
+    const earthNightMap = textureLoader.load(getAssetUrl('textures/earth-night.jpg'));
     earthNightMap.colorSpace = THREE.SRGBColorSpace;
     earthNightMap.minFilter = THREE.LinearMipmapLinearFilter;
 

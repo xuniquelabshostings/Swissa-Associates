@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { getAssetUrl } from '../../utils/assetHelper';
 
 export interface AirlinerComponents {
   root: THREE.Group;
@@ -21,7 +22,7 @@ export function createPhotorealisticSwisaAirliner(options?: {
   facingRight?: boolean;
 }): AirlinerComponents {
   const scale = options?.scale ?? 1.0;
-  const texturePath = options?.texturePath ?? '/airplane.png';
+  const texturePath = options?.texturePath ?? getAssetUrl('airplane.png');
   const facingRight = options?.facingRight ?? true;
 
   const planeGroup = new THREE.Group();

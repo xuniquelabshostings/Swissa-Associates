@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { getAssetUrl } from '../../utils/assetHelper';
 import { X, CheckCircle, Send, Shield, Clock } from 'lucide-react';
 import { COMPANY_DETAILS, SERVICES_DATA, DESTINATION_COUNTRIES } from '../../data/siteData';
 import { WhatsAppIcon } from './WhatsAppIcon';
@@ -49,7 +50,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
         <div className="bg-slate-900 px-6 py-4 text-white flex items-center justify-between border-b border-slate-800">
           <div className="flex items-center space-x-3">
             <div className="h-10 w-auto bg-white rounded-md p-1 border border-slate-200 flex items-center justify-center shrink-0">
-              <img src="/logo.png" alt="Swisa Logo" className="h-full w-auto object-contain max-w-[80px]" />
+              <img src={getAssetUrl('logo.png')} alt="Swisa Logo" className="h-full w-auto object-contain max-w-[80px]" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
