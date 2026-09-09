@@ -193,7 +193,7 @@ Submitted via Swisa Associates Official Portal`;
                       className="w-full py-3.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center space-x-2 shadow-sm hover-lift"
                     >
                       <Mail className="w-4 h-4 text-amber-400" />
-                      <span>Send Preformatted Email</span>
+                      <span>Send</span>
                     </button>
 
                     <button
