@@ -43,6 +43,9 @@ const getNormalizedPath = (): string => {
   if (path.startsWith('/Swisa-Associates')) {
     path = path.replace(/^\/Swisa-Associates/, '');
   }
+  if (path.startsWith('/Swissa-Associates')) {
+    path = path.replace(/^\/Swissa-Associates/, '');
+  }
 
   return path || '/';
 };
@@ -71,8 +74,8 @@ export function App() {
   const navigate = (path: string) => {
     const cleanPath = path.startsWith('/') ? path : `/${path}`;
     const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
-    const isRepoSubpath = window.location.pathname.startsWith('/Swissa-Associates');
-    const activeBase = (base && base !== '.') ? base : (isRepoSubpath ? '/Swissa-Associates' : '');
+    const matchedSubpath = window.location.pathname.match(/^\/Swiss?a-Associates/i)?.[0] || '';
+    const activeBase = (base && base !== '.') ? base : matchedSubpath;
     const fullTarget = activeBase ? `${activeBase}${cleanPath}` : cleanPath;
 
     window.history.pushState({}, '', fullTarget);

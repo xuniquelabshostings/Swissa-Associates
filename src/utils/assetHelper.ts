@@ -14,8 +14,9 @@ export function getAssetUrl(relativePath: string): string {
 
   // Dynamic fallback: check window.location for GitHub Pages repo subpath
   if (typeof window !== 'undefined') {
-    if (window.location.pathname.startsWith('/Swissa-Associates')) {
-      return `/Swissa-Associates/${clean}`;
+    const match = window.location.pathname.match(/^\/Swiss?a-Associates/i);
+    if (match) {
+      return `${match[0]}/${clean}`;
     }
   }
 
