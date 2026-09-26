@@ -40,8 +40,8 @@ const getNormalizedPath = (): string => {
   if (base && base !== '.' && path.startsWith(base)) {
     path = path.slice(base.length);
   }
-  if (path.startsWith('/Swissa-Associates')) {
-    path = path.replace(/^\/Swissa-Associates/, '');
+  if (path.startsWith('/Swisa-Associates')) {
+    path = path.replace(/^\/Swisa-Associates/, '');
   }
 
   return path || '/';
